@@ -10,14 +10,14 @@ services:
       MYSQL_DATABASE: devops
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
-      - two-tier-nt
+      - two-tier-net
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
       interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 60s
 
   flask-app:
     build: .
@@ -34,16 +34,15 @@ services:
       mysql:
         condition: service_healthy
     networks:
-      - two-tier-nt
+      - two-tier-net
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 60s
 
 volumes:
   mysql_data:
 
 networks:
-  two-tier-nt:
+  two-tier-net:
