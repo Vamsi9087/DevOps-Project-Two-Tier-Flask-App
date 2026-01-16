@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('Clone repo'){
             steps{
-                git branch: 'main', url: 'https://github.com/prashantgohel321/DevOps-Project-Two-Tier-Flask-App.git'
+                git branch: 'main', url: 'https://github.com/Vamsi9087/DevOps-Project-Two-Tier-Flask-App.git'
             }
         }
         stage('Build image'){
@@ -20,4 +20,5 @@ pipeline{
             }
         }
     }
+
 }
