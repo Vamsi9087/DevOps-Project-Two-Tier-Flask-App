@@ -2,25 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone repo') {
+        stage('Clone Repository') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/Vamsi9087/DevOps-Project-Two-Tier-Flask-App.git'
+                url: 'https://github.com/Vamsi9087/DevOps-Project-Two-Tier-Flask-App.git'
             }
         }
 
-        stage('Build image') {
+        stage('Build Docker Image') {
             steps {
-                bat 'docker build -t flask-app .'
+                bat 'docker build -t two-tier-flask-app .'
             }
         }
 
-        stage('Deploy with docker compose') {
+        stage('Deploy with Docker Compose') {
             steps {
-                // Stop containers (ignore error if none running)
-                bat 'docker compose down'
-
-                // Start app and rebuild image
+                bat 'docker compose down || exit 0'
                 bat 'docker compose up -d --build'
             }
         }
