@@ -31,3 +31,22 @@ This document outlines the step-by-step process for deploying a 2-tier web appli
                                                        | | Docker Container: MySQL | |
                                                        | +-------------------------+ |
                                                        +-----------------------------+
+
+
+
+3. Step 1: AWS EC2 Instance Preparation
+Launch EC2 Instance:
+Navigate to the AWS EC2 console.
+Launch a new instance using the Ubuntu 22.04 LTS AMI.
+Select the t2.micro instance type for free-tier eligibility.
+Create and assign a new key pair for SSH access.
+
+<img width="1919" height="1098" alt="Screenshot 2026-01-16 130721" src="https://github.com/user-attachments/assets/c44a8ac1-3037-41ca-aef9-cc7e654341a4" />
+
+
+
+
+
+
+
+
